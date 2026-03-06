@@ -3,9 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Digital Media Player</title>
+<title>JOKER URL</title>
 
-<!-- Google Font -->
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&display=swap" rel="stylesheet">
 
 <style>
@@ -82,6 +81,23 @@ padding:6px 14px;
 font-size:14px;
 }
 
+.copy-box{
+display:flex;
+gap:10px;
+margin-top:12px;
+flex-wrap:wrap;
+justify-content:center;
+}
+
+.copy-box input{
+padding:10px;
+border-radius:8px;
+border:none;
+width:260px;
+background:#020617;
+color:white;
+}
+
 .footer{
 margin-top:30px;
 font-size:13px;
@@ -91,10 +107,20 @@ opacity:0.7;
 </style>
 
 <script>
+
 function switchLang(lang){
 document.getElementById("ar").style.display = lang==="ar"?"block":"none";
 document.getElementById("en").style.display = lang==="en"?"block":"none";
 }
+
+function copyText(id){
+let text=document.getElementById(id);
+text.select();
+text.setSelectionRange(0,99999);
+navigator.clipboard.writeText(text.value);
+alert("Copied");
+}
+
 </script>
 
 </head>
@@ -108,10 +134,8 @@ document.getElementById("en").style.display = lang==="en"?"block":"none";
 
 <div class="container">
 
-<!-- ===== LOGO (غير الاسم فقط) ===== -->
-<img src="https://i.ibb.co/Z1F4KXyv/logo.png" class="logo">
 
-<!-- Arabic -->
+<!-- ===== Arabic ===== -->
 <div id="ar">
 
 <h1>Digital Media Player</h1>
@@ -119,17 +143,11 @@ document.getElementById("en").style.display = lang==="en"?"block":"none";
 <div class="card">
 <h2>تنويه مهم</h2>
 
-<p>
-جميع الروابط المستخدمة داخل تطبيق <b>Digital Media Player</b> هي ملك خاص بنا فقط.
-</p>
+<p>جميع الروابط المستخدمة داخل تطبيق <b>Digital Media Player</b> هي ملك خاص بنا فقط.</p>
 
-<p>
-التطبيق ليس له أي علاقة بمحتوى هذه الروابط أو إدارتها، وقد تم اختيار التطبيق فقط لأنه أعجبنا من حيث المشغل والنظام الخاص به.
-</p>
+<p>التطبيق ليس له أي علاقة بمحتوى هذه الروابط أو إدارتها، وقد تم اختيار التطبيق فقط لأنه أعجبنا من حيث المشغل والنظام الخاص به.</p>
 
-<p>
-نحن فقط قمنا بتحديد تشغيل روابطنا الخاصة داخل هذا التطبيق، ولا يمكن تشغيل هذه الروابط في أي تطبيق آخر.
-</p>
+<p>نحن فقط قمنا بتحديد تشغيل روابطنا الخاصة داخل هذا التطبيق، ولا يمكن تشغيل هذه الروابط في أي تطبيق آخر.</p>
 
 </div>
 
@@ -138,23 +156,48 @@ document.getElementById("en").style.display = lang==="en"?"block":"none";
 
 <p>1️⃣ قم بتحميل التطبيق من الرابط بالأسفل</p>
 <p>2️⃣ افتح التطبيق</p>
-<p>3️⃣ سيتم تشغيل القنوات تلقائياً</p>
+<p>3️⃣ إختر Xtream Codes</p>
+<p>4️⃣ أدخل البيانات التالية أو يمكنك نسخها من الأسفل ولصقها في التطبيق</p>
 
-<img src="image1.png">
-<img src="image2.png">
+<img src="https://i.ibb.co/YTqtSrpW/IMG-6380.png">
+
+</div>
+
+<div class="card">
+<h2>بيانات التشغيل</h2>
+  
+<div class="copy-box">
+<input id="playlistname_ar" value="joker">
+<button onclick="copyText('url_ar')">نسخ</button>
+</div>
+  
+<div class="copy-box">
+<input id="url_ar" value="https://joker.com">
+<button onclick="copyText('url_ar')">نسخ</button>
+</div>
+
+<div class="copy-box">
+<input id="user_ar" value="joker">
+<button onclick="copyText('user_ar')">نسخ</button>
+</div>
+
+<div class="copy-box">
+<input id="pass_ar" value="joker">
+<button onclick="copyText('pass_ar')">نسخ</button>
+</div>
 
 </div>
 
 <div class="card">
 <h2>تحميل التطبيق</h2>
-<a href="PUT-YOUR-LINK-HERE">
+<a href="https://apps.apple.com/app/id6759613501">
 <button>تحميل التطبيق</button>
 </a>
 </div>
 
 </div>
 
-<!-- English -->
+<!-- ===== English ===== -->
 <div id="en" style="display:none">
 
 <h1>Digital Media Player</h1>
@@ -162,17 +205,11 @@ document.getElementById("en").style.display = lang==="en"?"block":"none";
 <div class="card">
 <h2>Important Notice</h2>
 
-<p>
-All links used inside the <b>Digital Media Player</b> application are privately owned by us.
-</p>
+<p>All links used inside the <b>Digital Media Player</b> application are privately owned by us.</p>
 
-<p>
-The application has no relation to the content of these links. We selected it only because we liked its player and system.
-</p>
+<p>The application has no relation to the content of these links. We selected it only because we liked its player and system.</p>
 
-<p>
-We only configured our private links to run inside this application, and they cannot be played in any other app.
-</p>
+<p>We only configured our private links to run inside this application, and they cannot be played in any other app.</p>
 
 </div>
 
@@ -181,16 +218,41 @@ We only configured our private links to run inside this application, and they ca
 
 <p>1️⃣ Download the app from the link below</p>
 <p>2️⃣ Open the app</p>
-<p>3️⃣ Channels will start automatically</p>
+<p>3️⃣ Choose Xtream Codes</p>
+<p>4️⃣ Enter the following data, or you can copy it from below and paste it into the application</p>
 
-<img src="image1.png">
-<img src="image2.png">
+<img src="https://i.ibb.co/YTqtSrpW/IMG-6380.png">
+
+</div>
+
+<div class="card">
+<h2>Login Details</h2>
+
+<div class="copy-box">
+<input id="playlistname_en" value="joker">
+<button onclick="copyText('url_ar')">Copy</button>
+</div> 
+
+<div class="copy-box">
+<input id="url_en" value="https://joker.com">
+<button onclick="copyText('url_en')">Copy</button>
+</div>
+
+<div class="copy-box">
+<input id="user_en" value="joker">
+<button onclick="copyText('user_en')">Copy</button>
+</div>
+
+<div class="copy-box">
+<input id="pass_en" value="joker">
+<button onclick="copyText('pass_en')">Copy</button>
+</div>
 
 </div>
 
 <div class="card">
 <h2>Download</h2>
-<a href="PUT-YOUR-LINK-HERE">
+<a href="https://apps.apple.com/app/id6759613501">
 <button>Download App</button>
 </a>
 </div>
@@ -198,7 +260,7 @@ We only configured our private links to run inside this application, and they ca
 </div>
 
 <div class="footer">
-© Digital Media Player
+© JOKER URL
 </div>
 
 </div>
