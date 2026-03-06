@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Digital Media Player</title>
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+margin:0;
+font-family:"Cairo",sans-serif;
+background:linear-gradient(135deg,#020617,#0f172a,#020617);
+color:white;
+text-align:center;
+}
+
+.container{
+max-width:950px;
+margin:auto;
+padding:20px;
+}
+
+.logo{
+width:110px;
+margin-top:20px;
+}
+
+h1{
+font-size:34px;
+margin:10px 0;
+background:linear-gradient(90deg,#38bdf8,#22c55e);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.card{
+background:rgba(255,255,255,0.05);
+border-radius:14px;
+padding:25px;
+margin-top:20px;
+backdrop-filter:blur(10px);
+box-shadow:0 0 25px rgba(56,189,248,0.1);
+}
+
+button{
+padding:12px 25px;
+border:none;
+border-radius:10px;
+background:linear-gradient(90deg,#38bdf8,#22c55e);
+color:white;
+cursor:pointer;
+font-size:16px;
+margin-top:10px;
+transition:0.3s;
+}
+
+button:hover{
+transform:scale(1.05);
+}
+
+img{
+width:100%;
+max-width:600px;
+border-radius:12px;
+margin-top:15px;
+box-shadow:0 0 15px rgba(0,0,0,0.5);
+}
+
+.lang-box{
+position:absolute;
+top:15px;
+right:15px;
+}
+
+.lang-box button{
+margin-left:5px;
+padding:6px 14px;
+font-size:14px;
+}
+
+.footer{
+margin-top:30px;
+font-size:13px;
+opacity:0.7;
+}
+
+</style>
+
+<script>
+function switchLang(lang){
+document.getElementById("ar").style.display = lang==="ar"?"block":"none";
+document.getElementById("en").style.display = lang==="en"?"block":"none";
+}
+</script>
+
+</head>
+
+<body>
+
+<div class="lang-box">
+<button onclick="switchLang('ar')">العربية</button>
+<button onclick="switchLang('en')">English</button>
+</div>
+
+<div class="container">
+
+<!-- ===== LOGO (غير الاسم فقط) ===== -->
+<img src="logo.png" class="logo">
+
+<!-- Arabic -->
+<div id="ar">
+
+<h1>Digital Media Player</h1>
+
+<div class="card">
+<h2>تنويه مهم</h2>
+
+<p>
+جميع الروابط المستخدمة داخل تطبيق <b>Digital Media Player</b> هي ملك خاص بنا فقط.
+</p>
+
+<p>
+التطبيق ليس له أي علاقة بمحتوى هذه الروابط أو إدارتها، وقد تم اختيار التطبيق فقط لأنه أعجبنا من حيث المشغل والنظام الخاص به.
+</p>
+
+<p>
+نحن فقط قمنا بتحديد تشغيل روابطنا الخاصة داخل هذا التطبيق، ولا يمكن تشغيل هذه الروابط في أي تطبيق آخر.
+</p>
+
+</div>
+
+<div class="card">
+<h2>طريقة التشغيل</h2>
+
+<p>1️⃣ قم بتحميل التطبيق من الرابط بالأسفل</p>
+<p>2️⃣ افتح التطبيق</p>
+<p>3️⃣ سيتم تشغيل القنوات تلقائياً</p>
+
+<img src="image1.png">
+<img src="image2.png">
+
+</div>
+
+<div class="card">
+<h2>تحميل التطبيق</h2>
+<a href="PUT-YOUR-LINK-HERE">
+<button>تحميل التطبيق</button>
+</a>
+</div>
+
+</div>
+
+<!-- English -->
+<div id="en" style="display:none">
+
+<h1>Digital Media Player</h1>
+
+<div class="card">
+<h2>Important Notice</h2>
+
+<p>
+All links used inside the <b>Digital Media Player</b> application are privately owned by us.
+</p>
+
+<p>
+The application has no relation to the content of these links. We selected it only because we liked its player and system.
+</p>
+
+<p>
+We only configured our private links to run inside this application, and they cannot be played in any other app.
+</p>
+
+</div>
+
+<div class="card">
+<h2>How to Use</h2>
+
+<p>1️⃣ Download the app from the link below</p>
+<p>2️⃣ Open the app</p>
+<p>3️⃣ Channels will start automatically</p>
+
+<img src="image1.png">
+<img src="image2.png">
+
+</div>
+
+<div class="card">
+<h2>Download</h2>
+<a href="PUT-YOUR-LINK-HERE">
+<button>Download App</button>
+</a>
+</div>
+
+</div>
+
+<div class="footer">
+© Digital Media Player
+</div>
+
+</div>
+
+</body>
+</html>
