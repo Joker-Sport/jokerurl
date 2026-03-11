@@ -66,18 +66,24 @@ body {
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--gold-border);
-  padding: 10px 16px;
+  padding: 10px 130px 10px 16px;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 14px;
-  flex-wrap: wrap;
+  gap: 12px;
+  min-height: 50px;
 }
 
 .dl-banner span {
   font-size: clamp(13px, 3vw, 15px);
   font-weight: 700;
   color: var(--gold-light);
+  white-space: nowrap;
+}
+
+@media (max-width: 460px) {
+  .dl-banner span { display: none; }
+  .dl-banner { justify-content: flex-start; padding: 8px 120px 8px 16px; }
 }
 
 .btn-dl {
@@ -572,7 +578,7 @@ h1 {
   </button>
   <div class="lang-dropdown" id="langDropdown">
     <button class="lang-option active" id="optAr" onclick="switchLang('ar')">🇸🇦 العربية</button>
-    <button class="lang-option" id="optEn" onclick="switchLang('en')">us English</button>
+    <button class="lang-option" id="optEn" onclick="switchLang('en')">🇬🇧 English</button>
   </div>
 </div>
 
