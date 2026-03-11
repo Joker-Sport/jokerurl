@@ -436,27 +436,62 @@ h1 {
 /* ── Lang switch ── */
 .lang-box {
   position: fixed;
-  top: 14px; right: 14px;
+  top: 12px; right: 12px;
   z-index: 300;
-  display: flex;
-  gap: 6px;
 }
-.lang-btn {
-  padding: 7px 16px;
+.lang-toggle {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 14px;
   border: 1px solid var(--gold-border);
-  border-radius: 8px;
-  background: rgba(201,168,76,0.07);
+  border-radius: 10px;
+  background: rgba(7,8,13,0.88);
+  backdrop-filter: blur(12px);
   color: var(--gold-light);
   font-family: "Cairo", sans-serif;
-  font-size: clamp(12px, 2.8vw, 14px);
+  font-size: 14px;
   font-weight: 700;
   cursor: pointer;
   transition: 0.2s;
+  white-space: nowrap;
 }
-.lang-btn:hover, .lang-btn.active {
-  background: var(--gold-dim);
-  border-color: var(--gold);
+.lang-toggle:hover { background: var(--gold-dim); border-color: var(--gold); }
+.lang-toggle .arrow { font-size: 10px; opacity: 0.7; transition: transform 0.2s; }
+.lang-toggle.open .arrow { transform: rotate(180deg); }
+
+.lang-dropdown {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  background: rgba(13,15,24,0.97);
+  border: 1px solid var(--gold-border);
+  border-radius: 10px;
+  overflow: hidden;
+  display: none;
+  min-width: 130px;
+  box-shadow: 0 8px 28px rgba(0,0,0,0.5);
+  backdrop-filter: blur(16px);
 }
+.lang-dropdown.open { display: block; }
+.lang-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 16px;
+  font-family: "Cairo", sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-dim);
+  cursor: pointer;
+  transition: 0.15s;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: right;
+}
+.lang-option:hover { background: var(--gold-dim); color: var(--gold-light); }
+.lang-option.active { color: var(--gold-light); background: var(--gold-dim); }
 
 /* ── Toast ── */
 .toast {
@@ -531,9 +566,14 @@ h1 {
 <div class="g2"></div>
 
 <!-- Lang switch -->
-<div class="lang-box">
-  <button class="lang-btn active" id="btnAr" onclick="switchLang('ar')">العربية</button>
-  <button class="lang-btn" id="btnEn" onclick="switchLang('en')">English</button>
+<div class="lang-box" id="langBox">
+  <button class="lang-toggle" id="langToggle" onclick="toggleLangMenu()">
+    🌐 <span id="langLabel">العربية</span> <span class="arrow">▼</span>
+  </button>
+  <div class="lang-dropdown" id="langDropdown">
+    <button class="lang-option active" id="optAr" onclick="switchLang('ar')">🇸🇦 العربية</button>
+    <button class="lang-option" id="optEn" onclick="switchLang('en')">us English</button>
+  </div>
 </div>
 
 <!-- Telegram float -->
@@ -733,17 +773,36 @@ h1 {
 <script>
 let lang = "ar";
 
+function toggleLangMenu() {
+  const toggle = document.getElementById("langToggle");
+  const dropdown = document.getElementById("langDropdown");
+  toggle.classList.toggle("open");
+  dropdown.classList.toggle("open");
+}
+
+// Close dropdown when clicking outside
+document.addEventListener("click", function(e) {
+  const box = document.getElementById("langBox");
+  if (!box.contains(e.target)) {
+    document.getElementById("langToggle").classList.remove("open");
+    document.getElementById("langDropdown").classList.remove("open");
+  }
+});
+
 function switchLang(l) {
   lang = l;
   document.getElementById("ar").style.display = l==="ar" ? "block" : "none";
   document.getElementById("en").style.display = l==="en" ? "block" : "none";
   document.documentElement.lang = l;
   document.documentElement.dir = l==="ar" ? "rtl" : "ltr";
-  document.getElementById("btnAr").classList.toggle("active", l==="ar");
-  document.getElementById("btnEn").classList.toggle("active", l==="en");
-  // Update banner text
-  document.getElementById("dlText").textContent   = l==="ar" ? "📲 حمّل التطبيق الآن" : "📲 Download the App Now";
-  document.getElementById("dlBtnText").textContent = l==="ar" ? "تحميل التطبيق"         : "Download App";
+  document.getElementById("optAr").classList.toggle("active", l==="ar");
+  document.getElementById("optEn").classList.toggle("active", l==="en");
+  document.getElementById("langLabel").textContent = l==="ar" ? "العربية" : "English";
+  document.getElementById("dlText").textContent    = l==="ar" ? "📲 حمّل التطبيق الآن" : "📲 Download the App Now";
+  document.getElementById("dlBtnText").textContent = l==="ar" ? "تحميل التطبيق" : "Download App";
+  // Close dropdown
+  document.getElementById("langToggle").classList.remove("open");
+  document.getElementById("langDropdown").classList.remove("open");
 }
 
 function copyText(id) {
